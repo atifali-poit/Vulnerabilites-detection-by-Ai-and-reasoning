@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Data files (usually too large for git)
+*.csv
+*.json
+*.pickle
+*.pkl
+*.h5
+*.hdf5
+*.nc
+*.npz
+data/
+datasets/
+
+# Models (usually too large)
+*.pt
+*.pth
+*.onnx
+*.pb
+*.h5
+*.keras
+models/
+checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+*.env
+
+# MLflow
+mlruns/
