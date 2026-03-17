@@ -37,9 +37,10 @@ stages:
     cmd: python src/model_evaluation.py
     deps:
     - models/model.pkl
+    - data/processed/test_tfidf.csv  # Add this!
     - src/model_evaluation.py
-    metrics:
-    - reports/metrics.json
+
+# THESE SHOULD BE AT ROOT LEVEL (outside stages)
 params:
 - dvclive/params.yaml
 metrics:

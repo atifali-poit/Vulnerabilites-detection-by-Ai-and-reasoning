@@ -1,4 +1,0 @@
-[core]
-    remote = myremote
-['remote "myremote"']
-    url = /home/nazar/vscode_projects/first_tutorial/s3

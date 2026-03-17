@@ -121,7 +121,7 @@ def main():
         params_path = os.path.join(project_root, 'params.yaml')
         model_path = os.path.join(project_root, 'models', 'model.pkl')
         test_data_path = os.path.join(project_root, 'data', 'processed', 'test_tfidf.csv')
-        metrics_path = os.path.join(project_root, 'reports', 'metrics.json')
+        # REMOVE THIS LINE: metrics_path = os.path.join(project_root, 'reports', 'metrics.json')
 
         # 1. Load everything using the correct paths
         params = load_params(params_path=params_path)
@@ -136,24 +136,23 @@ def main():
         
         # Need y_pred for the live logging below
         y_pred = clf.predict(X_test)
-
-        # 3. Experiment tracking using dvclive
-        # We point Live to the project root so it knows where to put the dvclive/ folder
-        with Live(dir=os.path.join(project_root, "dvclive"), save_dvc_exp=True) as live:
+        dvclive_path = os.path.join(project_root, 'dvclive') # Force it to the root
+        # 3. Experiment tracking using dvclive - THIS IS ENOUGH
+        with Live(dir=dvclive_path, save_dvc_exp=True) as live:
             live.log_metric('accuracy', accuracy_score(y_test, y_pred))
             live.log_metric('precision', precision_score(y_test, y_pred))
             live.log_metric('recall', recall_score(y_test, y_pred))
-
             live.log_params(params)
         
+        # REMOVE THESE LINES:
         # 4. Save metrics report
-        save_metrics(metrics, metrics_path)
+        # save_metrics(metrics, metrics_path)
         
-        print(f"Success: Evaluation complete. Metrics saved to {metrics_path}")
+        # Update print statement
+        print(f"Success: Evaluation complete. Metrics saved to dvclive/")
 
     except Exception as e:
         logger.error('Failed to complete the model evaluation process: %s', e)
         print(f"Error: {e}")
-
 if __name__ == '__main__':
     main()
