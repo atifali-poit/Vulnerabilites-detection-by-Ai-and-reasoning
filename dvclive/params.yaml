@@ -3,5 +3,5 @@ data_ingestion:
 feature_engineering:
   max_features: 35
 model_building:
-  n_estimators: 22
+  n_estimators: 100
   random_state: 2

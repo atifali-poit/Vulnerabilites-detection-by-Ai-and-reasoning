@@ -63,3 +63,15 @@ mlruns/
 /data
 /models
 /reports
+
+# Data and Models
+data/
+models/
+
+
+# DVC/DVCLive - MUST BE VISIBLE
+!dvclive/**
+!*.json
+!dvc.yaml
+!dvc.lock
+!params.yaml
